@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pdf-dictation"
+dynamic = ["version"]
+description = "Controlled PDF dictation for copying textbooks by hand"
+readme = "README.md"
+license = {file = "LICENSE"}
+authors = [{name = "Shaikh Mhammad Ammar"}]
+requires-python = ">=3.11"
+dependencies = ["PySide6>=6.6", "PyMuPDF>=1.24", "pyttsx3>=2.90"]
+
+[project.optional-dependencies]
+dev = ["pytest", "ruff>=0.6", "pyright>=1.1.380"]
+build = ["pyinstaller>=6.6"]
+
+[project.gui-scripts]
+pdfdictation = "pdf_dictation.gui:main"
+
+[tool.setuptools.dynamic]
+version = { attr = "pdf_dictation.__version__" }
+
+[tool.setuptools.packages.find]
+include = ["pdf_dictation*"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 120
+exclude = [".venv", "build", "dist"]
+
+[tool.ruff.lint]
+select = ["E4", "E9", "F"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*.py" = ["E402", "F403", "F405"]
+
+[tool.pyright]
+include = ["pdf_dictation"]
+exclude = [".venv", "build", "dist", "tests"]
+typeCheckingMode = "basic"
+reportMissingImports = "none"
+reportMissingTypeStubs = "none"
+reportAssignmentType = "none"
+reportArgumentType = "none"
+reportOptionalMemberAccess = "none"
+reportOptionalSubscript = "none"

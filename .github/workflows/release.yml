@@ -1,0 +1,54 @@
+name: build
+on:
+  push: { tags: ["v*"] }
+  workflow_dispatch:
+jobs:
+  compatibility:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-22.04]
+        python: ["3.11", "3.12", "3.13"]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y espeak-ng
+      - run: pip install -e ".[dev]"
+      - if: runner.os == 'Linux'
+        env:
+          QT_QPA_PLATFORM: offscreen
+        run: pytest -q
+      - if: runner.os == 'Windows'
+        shell: pwsh
+        env:
+          QT_QPA_PLATFORM: offscreen
+        run: pytest -q
+
+  build:
+    strategy:
+      matrix: { os: [windows-latest, ubuntu-22.04] }   # old glibc => runs on more Linux distros
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y espeak-ng
+      - run: pip install -e ".[dev,build]"
+      - run: pytest -q
+      - run: ruff check .
+      - run: pyright
+      - if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          pyinstaller --noconfirm packaging/pdfdictation.spec
+          choco install innosetup -y
+          & "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" packaging\installer.iss
+      - if: runner.os == 'Linux'
+        run: ./packaging/build_linux.sh
+      - uses: actions/upload-artifact@v4
+        with: { name: "${{ matrix.os }}", path: "dist/*.exe\ndist/*.deb\ndist/*.tar.gz" }

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=PDF Dictation
+Comment=Dictate PDF text for handwriting
+Exec=pdfdictation
+Categories=Education;Utility;
+Terminal=false

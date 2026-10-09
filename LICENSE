@@ -1,0 +1,130 @@
+PDF DICTATION SOURCE-AVAILABLE NON-COMMERCIAL LICENSE
+Version 1.0 - 2026
+
+Copyright (c) 2026 Shaikh Mhammad Ammar
+
+Permission is granted to any person obtaining a copy of the source code of
+PDF Dictation (the "Software") to use, study, copy, modify, and share the
+source code, subject to all of the following conditions:
+
+1. DEFINITIONS
+
+   "Source Code" means the human-readable source files, documentation, and
+   configuration files distributed in the project repository.
+
+   "Packaged Build" means any compiled or bundled executable, installer,
+   AppImage, Linux package, Windows package, archive containing compiled
+   resources, or other binary distribution.
+
+   "Derivative Work" means a work based on or incorporating the Source Code.
+
+2. NON-COMMERCIAL USE
+
+   The Software and any derivative work based on its source code may be used
+   only for personal, educational, research, accessibility, or other
+   non-commercial purposes. Selling, licensing for payment, renting,
+   sublicensing, monetizing, or offering the Software or any feature or
+   resource of the Software as a paid service is prohibited.
+
+3. SOURCE SHARING
+
+   Modified source code may be shared for non-commercial purposes only.
+   Every shared copy or derivative must retain this license, this copyright
+   notice, and a clear statement identifying the modifications. No recipient
+   may receive broader rights than those granted by this license.
+
+4. ATTRIBUTION AND PROJECT REFERENCE
+
+   Copies and derivative works must give clear attribution to Shaikh Mhammad
+   Ammar
+   and must include a reference to the project repository:
+
+   https://github.com/Ammar1042005/pdf_dictation
+
+   The repository is the designated location for studying the program and
+   its source code.
+
+5. CONTRIBUTIONS
+
+   A contribution submitted to the project is understood to be provided
+   under this license unless the contributor and copyright holder agree in
+   writing to different terms. Contributors retain copyright in their
+   contributions and grant the project copyright holder and non-commercial
+   recipients the permissions needed to use, study, copy, modify, and share
+   those contributions under this license. Contributors must not knowingly
+   submit material they do not have permission to license.
+
+6. LIMITED PATENT LICENSE
+
+   Each contributor grants a non-exclusive, worldwide, royalty-free patent
+   license, limited to the contributor's patent claims necessarily infringed
+   by that contributor's contribution, to use, study, copy, modify, and share
+   the Source Code for the non-commercial purposes permitted by this license.
+   This patent license does not permit commercial use, sale, sublicensing,
+   distribution of Packaged Builds, or modification of Packaged Builds.
+   The patent license terminates for a party that brings a patent claim
+   alleging that the Software or a contribution infringes a patent, except
+   for claims brought in response to a patent action first brought against
+   that party.
+
+7. PACKAGED EXECUTABLES AND RESOURCES
+
+   No person may modify, patch, repackage, redistribute, sell, or create a
+   derivative executable, installer, AppImage, Linux package, Windows
+   package, or other compiled distribution of the Software. The executable
+   and packaged resources must not be reverse engineered, decompiled,
+   disassembled, unpacked for the purpose of creating a derivative
+   distribution, or otherwise altered.
+
+8. NO COMMERCIAL DISTRIBUTION
+
+   No person may distribute the Software, its source code, any feature, or
+   any resource as part of a commercial product, commercial service, paid
+   bundle, advertisement-supported service, or competing product.
+
+9. NO SUBLICENSING OR REMOVAL OF CONDITIONS
+
+   No person may sublicense the Software, remove or obscure this license,
+   remove attribution, or impose additional restrictions on recipients of
+   shared Source Code. A derivative may include additional notices only if
+   they do not conflict with this license.
+
+10. TERMINATION AND CURE
+
+   These permissions terminate automatically for anyone who violates this
+   license. Permissions for a particular recipient are reinstated
+   provisionally if the violation is completely cured within thirty days
+   after that recipient first receives written notice of the violation, and
+   are reinstated permanently if the copyright holder expressly confirms
+   reinstatement in writing. Termination does not terminate permissions
+   already validly granted to compliant recipients.
+
+11. NO TRADEMARK GRANT
+
+   This license does not grant permission to use the project name, logos,
+   icons, or other branding except as reasonably necessary to provide the
+   required attribution.
+
+12. LICENSE VERSION AND PROJECT CHANGES
+
+   This version of the license applies to the copy received with the
+   Software. The copyright holder may publish new license versions, but no
+   new version changes the terms for a copy already received unless the
+   recipient chooses to accept the new version.
+
+13. LEGAL LIMITATIONS
+
+   This license does not restrict rights that applicable law requires to
+   remain available, including legally protected rights to interoperability,
+   security research, accessibility, or reverse engineering. Where such
+   rights apply, they remain limited to the scope required by law.
+
+14. DISCLAIMER AND LIMITATION OF LIABILITY
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+   OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT.
+   IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES,
+   OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE,
+   ARISING FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+   OTHER DEALINGS IN THE SOFTWARE.
