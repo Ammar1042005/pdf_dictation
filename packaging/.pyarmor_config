@@ -1,0 +1,25 @@
+# PyArmor configuration for code protection
+# This file configures PyArmor to obfuscate the pdf_dictation package
+
+# Restriction mode: 1 = basic, 2 = restricted (no dynamic code execution)
+restrict_mode = 2
+
+# Enable cross-platform protection
+cross_protection = True
+
+# Enable anti-debugging
+anti_debug = True
+
+# Enable anti-tampering
+anti_tamper = True
+
+# Obfuscate mode: 0 = simple, 1 = advanced
+obfuscate_mode = 1
+
+# Exclude test files from obfuscation
+exclude = [
+    "tests/*",
+    "*/tests/*",
+    "__pycache__/*",
+    "*.pyc"
+]

@@ -35,6 +35,7 @@ class Settings:
     use_ocr_cache: bool = True
     auto_update: bool = False
     enable_plugins: bool = False
+    license_accepted: bool = False
 
     def word_rules(self):
         return WordRules(self.short_weight, self.long_weight, self.short_max, self.target)

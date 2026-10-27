@@ -2,8 +2,141 @@ Metadata-Version: 2.4
 Name: pdf-dictation
 Version: 0.1.0
 Summary: Controlled PDF dictation for copying textbooks by hand
+Author: Shaikh Mhammad Ammar
+License: PDF DICTATION SOURCE-AVAILABLE NON-COMMERCIAL LICENSE
+        Version 1.0 - 2026
+        
+        Copyright (c) 2026 Shaikh Mhammad Ammar
+        
+        Permission is granted to any person obtaining a copy of the source code of
+        PDF Dictation (the "Software") to use, study, copy, modify, and share the
+        source code, subject to all of the following conditions:
+        
+        1. DEFINITIONS
+        
+           "Source Code" means the human-readable source files, documentation, and
+           configuration files distributed in the project repository.
+        
+           "Packaged Build" means any compiled or bundled executable, installer,
+           AppImage, Linux package, Windows package, archive containing compiled
+           resources, or other binary distribution.
+        
+           "Derivative Work" means a work based on or incorporating the Source Code.
+        
+        2. NON-COMMERCIAL USE
+        
+           The Software and any derivative work based on its source code may be used
+           only for personal, educational, research, accessibility, or other
+           non-commercial purposes. Selling, licensing for payment, renting,
+           sublicensing, monetizing, or offering the Software or any feature or
+           resource of the Software as a paid service is prohibited.
+        
+        3. SOURCE SHARING
+        
+           Modified source code may be shared for non-commercial purposes only.
+           Every shared copy or derivative must retain this license, this copyright
+           notice, and a clear statement identifying the modifications. No recipient
+           may receive broader rights than those granted by this license.
+        
+        4. ATTRIBUTION AND PROJECT REFERENCE
+        
+           Copies and derivative works must give clear attribution to Shaikh Mhammad
+           Ammar
+           and must include a reference to the project repository:
+        
+           https://github.com/Ammar1042005/pdf_dictation
+        
+           The repository is the designated location for studying the program and
+           its source code.
+        
+        5. CONTRIBUTIONS
+        
+           A contribution submitted to the project is understood to be provided
+           under this license unless the contributor and copyright holder agree in
+           writing to different terms. Contributors retain copyright in their
+           contributions and grant the project copyright holder and non-commercial
+           recipients the permissions needed to use, study, copy, modify, and share
+           those contributions under this license. Contributors must not knowingly
+           submit material they do not have permission to license.
+        
+        6. LIMITED PATENT LICENSE
+        
+           Each contributor grants a non-exclusive, worldwide, royalty-free patent
+           license, limited to the contributor's patent claims necessarily infringed
+           by that contributor's contribution, to use, study, copy, modify, and share
+           the Source Code for the non-commercial purposes permitted by this license.
+           This patent license does not permit commercial use, sale, sublicensing,
+           distribution of Packaged Builds, or modification of Packaged Builds.
+           The patent license terminates for a party that brings a patent claim
+           alleging that the Software or a contribution infringes a patent, except
+           for claims brought in response to a patent action first brought against
+           that party.
+        
+        7. PACKAGED EXECUTABLES AND RESOURCES
+        
+           No person may modify, patch, repackage, redistribute, sell, or create a
+           derivative executable, installer, AppImage, Linux package, Windows
+           package, or other compiled distribution of the Software. The executable
+           and packaged resources must not be reverse engineered, decompiled,
+           disassembled, unpacked for the purpose of creating a derivative
+           distribution, or otherwise altered.
+        
+        8. NO COMMERCIAL DISTRIBUTION
+        
+           No person may distribute the Software, its source code, any feature, or
+           any resource as part of a commercial product, commercial service, paid
+           bundle, advertisement-supported service, or competing product.
+        
+        9. NO SUBLICENSING OR REMOVAL OF CONDITIONS
+        
+           No person may sublicense the Software, remove or obscure this license,
+           remove attribution, or impose additional restrictions on recipients of
+           shared Source Code. A derivative may include additional notices only if
+           they do not conflict with this license.
+        
+        10. TERMINATION AND CURE
+        
+           These permissions terminate automatically for anyone who violates this
+           license. Permissions for a particular recipient are reinstated
+           provisionally if the violation is completely cured within thirty days
+           after that recipient first receives written notice of the violation, and
+           are reinstated permanently if the copyright holder expressly confirms
+           reinstatement in writing. Termination does not terminate permissions
+           already validly granted to compliant recipients.
+        
+        11. NO TRADEMARK GRANT
+        
+           This license does not grant permission to use the project name, logos,
+           icons, or other branding except as reasonably necessary to provide the
+           required attribution.
+        
+        12. LICENSE VERSION AND PROJECT CHANGES
+        
+           This version of the license applies to the copy received with the
+           Software. The copyright holder may publish new license versions, but no
+           new version changes the terms for a copy already received unless the
+           recipient chooses to accept the new version.
+        
+        13. LEGAL LIMITATIONS
+        
+           This license does not restrict rights that applicable law requires to
+           remain available, including legally protected rights to interoperability,
+           security research, accessibility, or reverse engineering. Where such
+           rights apply, they remain limited to the scope required by law.
+        
+        14. DISCLAIMER AND LIMITATION OF LIABILITY
+        
+           THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+           OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+           MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT.
+           IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES,
+           OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE,
+           ARISING FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+           OTHER DEALINGS IN THE SOFTWARE.
+        
 Requires-Python: >=3.11
 Description-Content-Type: text/markdown
+License-File: LICENSE
 Requires-Dist: PySide6>=6.6
 Requires-Dist: PyMuPDF>=1.24
 Requires-Dist: pyttsx3>=2.90
@@ -13,9 +146,15 @@ Requires-Dist: ruff>=0.6; extra == "dev"
 Requires-Dist: pyright>=1.1.380; extra == "dev"
 Provides-Extra: build
 Requires-Dist: pyinstaller>=6.6; extra == "build"
+Requires-Dist: pyarmor>=8.0; extra == "build"
+Dynamic: license-file
 
 # PDF Dictation
 Controlled dictation for copying a PDF into a paper notebook: speak a chunk, stay silent while you write, speak the next, and pause at figures.
+
+## Credits
+
+PDF Dictation was created by **Shaikh Mhammad Ammar**.
 
 ## Install
 Create and activate a virtual environment, then install the project in editable mode:
@@ -71,7 +210,21 @@ To run it without activating the environment on Windows:
 ```
 
 Linux TTS needs `espeak-ng` (`sudo apt install espeak-ng`). Tests: `pytest` (GUI tests use Qt's offscreen platform in CI).
+On Windows, run `powershell -ExecutionPolicy Bypass -File packaging/install_ocr.ps1 -Install` for an optional WinGet-assisted Tesseract installation. The script is explicit about failures and never changes OCR settings automatically.
 Quality checks: `ruff check .` and `pyright`.
+CI tests Python 3.11, 3.12, and 3.13 on Windows and Ubuntu. Release packaging remains pinned to Python 3.11. Linux releases can use `packaging/build_linux.sh` for a portable tarball; `packaging/build_appimage.sh` stages an AppImage and uses `appimagetool` when available.
+The application runs locally and does not require cloud APIs, API keys, authentication tokens, or network access at runtime. PDF processing uses `pymupdf`; OCR uses locally installed Tesseract when enabled; speech uses the local `pyttsx3` backend.
+The application includes a local document-and-speech icon in the desktop window and packaged builds.
+Updates are opt-in in Settings. Enable “Check GitHub for updates at startup” when you want release checks. Official release sources are built into the application and cannot be edited by users; additional official mirrors can be added in future application releases. Checks are read-only, use a short timeout, and open the verified GitHub release page for manual installation; the application never silently replaces files.
+## License
+
+PDF Dictation uses the **PDF Dictation Source-Available Non-Commercial License**. The source code may be studied, modified, and shared for non-commercial purposes with attribution and the same restrictions. Selling the project, using it commercially, or modifying, reverse engineering, repackaging, or redistributing its Windows executable, Linux package, AppImage, or other packaged resources is prohibited, except where applicable law requires otherwise. The license also defines contribution, limited patent, attribution, termination, no-sublicensing, trademark, warranty, and liability terms.
+
+For studying the program, visit the project repository: <https://github.com/Ammar1042005/pdf_dictation>.
+Primary controls and live dictation status elements expose accessible names and descriptions, with a predictable keyboard focus order for screen readers.
+Main text uses Qt font sizes that follow desktop scaling, and status colors adapt to high-contrast system palettes.
+Settings includes an opt-in privacy-safe diagnostics export containing environment and selected settings only; PDF text, OCR text, and document paths are not included.
+Packaged users can extend the application without modifying the EXE or Linux package. Enable **External plugins and voice profiles** in Settings, then use **Open plugins folder**. Add JSON voice profiles containing `{"name": "My Voice", "voice_id": "installed-system-voice-id"}` to expose installed local TTS voices under a custom name. Python plugin files may define `register(profiles)`, append `{"name": "...", "voice_id": "..."}` dictionaries to `profiles`, and are loaded only after this setting is enabled. Python plugins are trusted code and can access the user account. Voice audio engines still need to be installed in the operating system; a profile does not bypass OS voice licensing or installation.
 
 ## How it works
 * **Word units:** 1–3 letters = 0.5, 4+ letters = 1.0 (punctuation ignored; numbers count digits). Chunks close at ≥3.0 units, or earlier at a sentence mark once ≥1.5. Words are never split; paragraphs never merge.
@@ -81,7 +234,7 @@ Quality checks: `ruff check .` and `pyright`.
 * **On-screen controls:** Start/Pause, Repeat, Previous, and Next buttons are available in the main window.
 * **Speech modes:** prose ignores symbols by default; enable **Speak punctuation** for sentence punctuation or **Speak code symbols** in Settings to hear brackets, operators, quotes, underscores, and other code characters.
   The default **Automatic** speech profile detects code-like chunks and speaks their special characters while keeping ordinary prose natural. Use **Prose** or **Code** in Settings to override detection.
-* **PDF viewer:** Includes page navigation (spinbox), zoom controls (0.5x to 3.0x), document-wide search with page/result navigation, and in-session page bookmarks. The viewer automatically shows the current chunk's page and highlights the current text or image.
+* **PDF viewer:** Includes a scrollable page-thumbnail panel, page navigation (spinbox), back/forward page history, zoom controls (0.5x to 3.0x), document-wide search with page/result navigation, and in-session page bookmarks. Selecting a thumbnail jumps to that page. The viewer automatically shows the current chunk's page and highlights the current text or image.
 * Progress is saved per PDF hash in `~/.pdf_dictation/sessions`. Log: `~/pdf_dictation.log`.
 
 ## OCR (scanned PDFs)
@@ -103,4 +256,4 @@ User data (settings, progress, log) lives in `%APPDATA%\PDFDictation` or `~/.loc
 Before public release: set a real maintainer in `build_linux.sh`, add a LICENSE and an icon, and consider code-signing the Windows installer (otherwise SmartScreen warns).
 
 ## Known limitations
-Navigation history and AppImage builds are not implemented yet.
+AppImage builds are not implemented yet.

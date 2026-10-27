@@ -6,7 +6,9 @@ from PySide6.QtCore import QTimer, Qt, QThread, QRectF, Signal, QPoint, QSize
 from PySide6.QtGui import QShortcut, QKeySequence, QPixmap, QImage, QPainter, QPen, QColor, QFont, QPalette, QIcon
 from PySide6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QLabel,
                                QPushButton, QFileDialog, QMessageBox, QDoubleSpinBox, QSpinBox, QProgressBar,
-                               QProgressDialog, QLineEdit, QComboBox, QListWidget, QListWidgetItem, QSplitter)
+                               QProgressDialog, QLineEdit, QComboBox, QListWidget, QListWidgetItem, QSplitter,
+                               QDialog, QTextEdit, QCheckBox)
+from PySide6.QtGui import QDesktopServices
 from PySide6.QtWidgets import QScrollArea
 from pdf_dictation import sessions, settings as cfg
 from pdf_dictation.chunker import TextChunker, ImageItem, timing_char_count
@@ -34,6 +36,63 @@ class PreviewLabel(QLabel):
         if event.button() == Qt.LeftButton:
             self.clicked.emit(event.position().toPoint())
         super().mousePressEvent(event)
+
+
+class LicenseDialog(QDialog):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.setWindowTitle("License Agreement")
+        self.setMinimumSize(600, 500)
+        layout = QVBoxLayout(self)
+
+        title = QLabel("PDF Dictation License Agreement")
+        title_font = QFont(title.font())
+        title_font.setPointSize(14)
+        title_font.setBold(True)
+        title.setFont(title_font)
+        layout.addWidget(title)
+
+        layout.addWidget(QLabel("Please read and accept the license to continue:"))
+
+        # Clickable GitHub link
+        github_label = QLabel('<a href="https://github.com/Ammar1042005/pdf_dictation">Source code available at GitHub</a>')
+        github_label.setTextInteractionFlags(Qt.TextBrowserInteraction)
+        github_label.setOpenExternalLinks(True)
+        layout.addWidget(github_label)
+
+        self.license_text = QTextEdit()
+        self.license_text.setReadOnly(True)
+        self.license_text.setPlainText(self._load_license())
+        layout.addWidget(self.license_text)
+
+        self.accept_checkbox = QCheckBox("I have read and agree to the license terms")
+        self.accept_checkbox.stateChanged.connect(self._on_checkbox_changed)
+        layout.addWidget(self.accept_checkbox)
+
+        button_box = QHBoxLayout()
+        self.accept_button = QPushButton("Accept")
+        self.accept_button.setEnabled(False)
+        self.accept_button.clicked.connect(self.accept)
+        self.reject_button = QPushButton("Decline")
+        self.reject_button.clicked.connect(self.reject)
+        button_box.addWidget(self.reject_button)
+        button_box.addWidget(self.accept_button)
+        layout.addLayout(button_box)
+
+    def _load_license(self):
+        try:
+            license_file = paths.resource("LICENSE")
+            if license_file.exists():
+                return license_file.read_text(encoding="utf-8")
+        except Exception:
+            pass
+        return "License file not found. Please visit https://github.com/Ammar1042005/pdf_dictation to view the license."
+
+    def _on_checkbox_changed(self, state):
+        self.accept_button.setEnabled(state == 2)  # 2 = Qt.Checked
+
+    def is_accepted(self):
+        return self.result() == QDialog.Accepted
 
 
 class Loader(QThread):
@@ -606,9 +665,25 @@ class Win(QMainWindow):
 
 
 def main():
-    a = QApplication(sys.argv); a.setApplicationName("PDF Dictation")
+    a = QApplication(sys.argv)
+    a.setApplicationName("PDF Dictation")
     a.setWindowIcon(QIcon(str(paths.resource("assets/pdf_dictation.svg"))))
-    w = Win(); w.resize(900, 800); w.show(); sys.exit(a.exec())
+
+    settings = cfg.load()
+
+    if not settings.license_accepted:
+        dialog = LicenseDialog()
+        if dialog.exec() == QDialog.Accepted:
+            settings.license_accepted = True
+            cfg.save(settings)
+        else:
+            QMessageBox.warning(None, "License Required", "You must accept the license to use PDF Dictation.")
+            sys.exit(1)
+
+    w = Win()
+    w.resize(900, 800)
+    w.show()
+    sys.exit(a.exec())
 
 
 if __name__ == "__main__":

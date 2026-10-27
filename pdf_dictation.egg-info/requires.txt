@@ -4,6 +4,7 @@ pyttsx3>=2.90
 
 [build]
 pyinstaller>=6.6
+pyarmor>=8.0
 
 [dev]
 pytest

@@ -14,7 +14,7 @@ dependencies = ["PySide6>=6.6", "PyMuPDF>=1.24", "pyttsx3>=2.90"]
 
 [project.optional-dependencies]
 dev = ["pytest", "ruff>=0.6", "pyright>=1.1.380"]
-build = ["pyinstaller>=6.6"]
+build = ["pyinstaller>=6.6", "pyarmor>=8.0"]
 
 [project.gui-scripts]
 pdfdictation = "pdf_dictation.gui:main"

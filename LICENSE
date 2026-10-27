@@ -76,6 +76,16 @@ source code, subject to all of the following conditions:
    disassembled, unpacked for the purpose of creating a derivative
    distribution, or otherwise altered.
 
+   IMPORTANT: The compiled executable is provided as a convenience for
+   users who wish to use the Software without building from source. Users
+   who wish to study, modify, or understand the Software's internals must
+   obtain the source code from the official project repository at:
+   https://github.com/Ammar1042005/pdf_dictation
+
+   Reverse engineering, decompiling, or any attempt to extract source code
+   or intellectual property from the packaged executable is strictly
+   prohibited.
+
 8. NO COMMERCIAL DISTRIBUTION
 
    No person may distribute the Software, its source code, any feature, or
