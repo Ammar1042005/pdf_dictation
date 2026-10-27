@@ -1,11 +1,22 @@
 # PDF Dictation
 Controlled dictation for copying a PDF into a paper notebook: speak a chunk, stay silent while you write, speak the next, and pause at figures.
 
+## Quick Start (For Users)
+
+**Just want to use the application?** You don't need to download the entire repository or build from source.
+
+1. Download the latest `PDFDictation.exe` from the [GitHub Releases page](https://github.com/Ammar1042005/pdf_dictation/releases)
+2. Run the executable directly - no installation required
+3. Accept the license agreement when prompted
+4. Start using PDF Dictation immediately
+
+The standalone executable includes all dependencies and works out of the box on Windows.
+
 ## Credits
 
 PDF Dictation was created by **Shaikh Mhammad Ammar**.
 
-## Install
+## Install (For Developers)
 Create and activate a virtual environment, then install the project in editable mode:
 
 ### Windows PowerShell
@@ -67,9 +78,25 @@ The application includes a local document-and-speech icon in the desktop window 
 Updates are opt-in in Settings. Enable “Check GitHub for updates at startup” when you want release checks. Official release sources are built into the application and cannot be edited by users; additional official mirrors can be added in future application releases. Checks are read-only, use a short timeout, and open the verified GitHub release page for manual installation; the application never silently replaces files.
 ## License
 
-PDF Dictation uses the **PDF Dictation Source-Available Non-Commercial License**. The source code may be studied, modified, and shared for non-commercial purposes with attribution and the same restrictions. Selling the project, using it commercially, or modifying, reverse engineering, repackaging, or redistributing its Windows executable, Linux package, AppImage, or other packaged resources is prohibited, except where applicable law requires otherwise. The license also defines contribution, limited patent, attribution, termination, no-sublicensing, trademark, warranty, and liability terms.
+PDF Dictation uses the **PDF Dictation Source-Available Non-Commercial License**.
 
-For studying the program, visit the project repository: <https://github.com/Ammar1042005/pdf_dictation>.
+### For Users (Packaged Executable)
+- The `PDFDictation.exe` standalone executable may be used for free for personal, educational, research, accessibility, or other non-commercial purposes
+- No commercial use, selling, licensing for payment, or monetization is permitted
+- The executable must **not** be reverse engineered, decompiled, disassembled, or modified
+- Users who wish to study the program's internals or access source code must obtain it from the official GitHub repository
+- The executable may not be repackaged, redistributed, or distributed as part of a commercial product
+
+### For Developers (Source Code)
+- The source code may be studied, modified, and shared for non-commercial purposes with attribution and the same restrictions
+- Modified source code may be shared for non-commercial purposes only
+- All derivatives must retain the license, copyright notice, and attribution
+- Contributions to the project are accepted under the same license terms
+
+### Important Notes
+- Selling the project, using it commercially, or modifying, reverse engineering, repackaging, or redistributing its Windows executable, Linux package, AppImage, or other packaged resources is prohibited, except where applicable law requires otherwise
+- The license also defines contribution, limited patent, attribution, termination, no-sublicensing, trademark, warranty, and liability terms
+- For studying the program or accessing source code, visit the project repository: <https://github.com/Ammar1042005/pdf_dictation>
 Primary controls and live dictation status elements expose accessible names and descriptions, with a predictable keyboard focus order for screen readers.
 Main text uses Qt font sizes that follow desktop scaling, and status colors adapt to high-contrast system palettes.
 Settings includes an opt-in privacy-safe diagnostics export containing environment and selected settings only; PDF text, OCR text, and document paths are not included.
@@ -92,12 +119,14 @@ Windows: install from github.com/UB-Mannheim/tesseract · Linux: `sudo apt insta
 Full-page scan images are not treated as figures; real figures on scanned pages are still detected.
 
 ## Build installers
+**Note:** Pre-built executables are available on the [GitHub Releases page](https://github.com/Ammar1042005/pdf_dictation/releases) for users who don't want to build from source.
+
 Everything is a normal Python package (`pdfdictation` command, `python -m pdf_dictation`), so the same code builds for both OSes.
 Builds must be run on the target OS (PyInstaller does not cross-compile); the included GitHub Actions workflow does this automatically.
 
 | Target | Command | Output (`dist/`) |
 |---|---|---|
-| Windows | `pip install -e ".[build]"` then `pyinstaller --noconfirm packaging/pdfdictation.spec` then `iscc packaging\installer.iss` | `PDFDictation-Setup-<ver>.exe` (no Python needed) |
+| Windows | `pip install -e ".[build]"` then `pyinstaller --noconfirm packaging/pdfdictation.spec` then `iscc packaging\installer.iss` | `PDFDictation.exe` (standalone) + `PDFDictation-Setup-<ver>.exe` (installer) |
 | Debian/Ubuntu | `./packaging/build_linux.sh` | `.deb` (installs espeak-ng automatically) + portable `.tar.gz` |
 | Any | push a tag like `v0.1.0` | CI builds and uploads all artifacts |
 
